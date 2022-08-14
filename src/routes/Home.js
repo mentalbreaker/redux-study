@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Home() {
+const Home = () => {
   const [text, setText] = useState("");
+  const changeText = (e) => {
+    let val = e.target.value;
+    setText(val);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setText("");
+  };
 
   return (
     <>
       <h1>Home</h1>
-      <form>
-        <input type="text" vaule={text} />
-        <button>send</button>
+      <form onSubmit={onSubmit}>
+        <input type="text" onChange={changeText} />
+        <button>Add</button>
         <ul></ul>
       </form>
     </>
   );
-}
+};
+
+export default Home;
